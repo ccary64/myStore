@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: mystorepassword
+      MYSQL_DATABASE: mystore
+      MYSQL_USER: mystoreuser
+      MYSQL_PASSWORD: mystorepassword
+    volumes:
+      - ./tmp:/var/lib/mysql
+    healthcheck:
+      test: exit 0
+
+  web:
+    command: npm start
+    image: "node:8.9.3-alpine"
+    working_dir: /src/app
+    volumes:
+    - "..:/src/app"
+    ports:
+     - "3000:3000"
+    depends_on:
+     - "db"
+    environment:
+      DB_USERNAME: mystoreuser
+      DB_PASSWORD: mystorepassword
+      DB_NAME: mystore

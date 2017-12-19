@@ -1,10 +1,16 @@
 import 'babel-polyfill';
 import React from 'react';
 import { render } from 'react-dom'
+import { Provider } from 'react-redux'
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import * as itemsActions from './actions/items';
+import createStore from './store'
 import { Main, Home, ItemsList, Item, Cart } from './components';
 
-render(  
+const store = createStore({cart: {}, itemList: {}})
+store.dispatch(itemsActions.fetchAll());
+render(
+  <Provider store={store}>
   <BrowserRouter>
     <Switch>
       <Main>
@@ -14,4 +20,5 @@ render(
         <Route exact path='/cart' component={Cart}/>
       </Main>
     </Switch>
-  </BrowserRouter>,  document.getElementById('app'));
+  </BrowserRouter>
+  </Provider>,  document.getElementById('app'));
