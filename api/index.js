@@ -1,9 +1,12 @@
 'use strict';
 
+const config = require('../config');
 const controllers = require('./controllers');
-const API_ROUTE_PREFIX = '/api';
-const ITEM_ROUTE_PREFIX = '/items';
-const CART_ROUTE_PREFIX = '/cart';
+const { 
+  API_ROUTE_PREFIX,
+  ITEM_ROUTE_PREFIX,
+  CART_ROUTE_PREFIX
+} = config.routes;
 
 module.exports = class Api {
   constructor(app, express) {

@@ -1,10 +1,17 @@
 'use strict';
 
+const config = require('../config');
+const { 
+  BASE_ROUTE,
+  ITEM_ROUTE_PREFIX,
+  CART_ROUTE_PREFIX
+} = config.routes;
+
 const frontEndRoutes = [
-  '/',
-  '/items',
-  '/items/:itemId',
-  '/cart'
+  BASE_ROUTE,
+  ITEM_ROUTE_PREFIX,
+  `${ITEM_ROUTE_PREFIX}/*`,
+  CART_ROUTE_PREFIX
 ]
 
 module.exports = class FrontEnd {
