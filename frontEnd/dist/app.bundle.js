@@ -5979,17 +5979,20 @@ var _components = __webpack_require__(402);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 (0, _reactDom.render)(_react2.default.createElement(
-    _reactRouterDom.BrowserRouter,
+  _reactRouterDom.BrowserRouter,
+  null,
+  _react2.default.createElement(
+    _reactRouterDom.Switch,
     null,
     _react2.default.createElement(
-        _reactRouterDom.Switch,
-        null,
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _components.Home }),
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/items', component: _components.ItemsList }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/items/:itemId', component: _components.Item }),
-        _react2.default.createElement(_reactRouterDom.Route, { path: '/items/:itemId/', component: _components.Item }),
-        _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/cart', component: _components.Cart })
+      _components.Main,
+      null,
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _components.Home }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/items', component: _components.ItemsList }),
+      _react2.default.createElement(_reactRouterDom.Route, { path: '/items/:itemId', component: _components.Item }),
+      _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/cart', component: _components.Cart })
     )
+  )
 ), document.getElementById('app'));
 
 /***/ }),
@@ -32302,26 +32305,31 @@ module.exports = function hoistNonReactStatics(targetComponent, sourceComponent,
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.Cart = exports.Item = exports.ItemsList = exports.Home = undefined;
+exports.Cart = exports.Item = exports.ItemsList = exports.Home = exports.Main = undefined;
 
-var _home = __webpack_require__(403);
+var _main = __webpack_require__(403);
+
+var _main2 = _interopRequireDefault(_main);
+
+var _home = __webpack_require__(405);
 
 var _home2 = _interopRequireDefault(_home);
 
-var _itemsList = __webpack_require__(404);
+var _itemsList = __webpack_require__(406);
 
 var _itemsList2 = _interopRequireDefault(_itemsList);
 
-var _item = __webpack_require__(405);
+var _item = __webpack_require__(407);
 
 var _item2 = _interopRequireDefault(_item);
 
-var _cart = __webpack_require__(406);
+var _cart = __webpack_require__(408);
 
 var _cart2 = _interopRequireDefault(_cart);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+exports.Main = _main2.default;
 exports.Home = _home2.default;
 exports.ItemsList = _itemsList2.default;
 exports.Item = _item2.default;
@@ -32342,13 +32350,18 @@ var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _navbar = __webpack_require__(404);
+
+var _navbar2 = _interopRequireDefault(_navbar);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
   return _react2.default.createElement(
     'div',
     null,
-    'Home'
+    _react2.default.createElement(_navbar2.default, null),
+    props.children
   );
 };
 
@@ -32367,13 +32380,54 @@ var _react = __webpack_require__(9);
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactRouterDom = __webpack_require__(373);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function (props) {
   return _react2.default.createElement(
-    'div',
-    null,
-    'All Items'
+    'nav',
+    { className: 'navbar navbar-inverse' },
+    _react2.default.createElement(
+      'div',
+      { className: 'container' },
+      _react2.default.createElement(
+        'div',
+        { className: 'navbar-header' },
+        _react2.default.createElement(
+          _reactRouterDom.Link,
+          { to: '/', className: 'navbar-brand' },
+          'My Awesome Store'
+        ),
+        _react2.default.createElement(
+          'ul',
+          { className: 'nav navbar-nav' },
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/items' },
+              'Items'
+            )
+          ),
+          _react2.default.createElement(
+            'li',
+            null,
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/cart' },
+              _react2.default.createElement('span', { className: 'glyphicon glyphicon-shopping-cart' }),
+              _react2.default.createElement(
+                'span',
+                { className: 'badge' },
+                '4'
+              )
+            )
+          )
+        )
+      )
+    )
   );
 };
 
@@ -32398,12 +32452,62 @@ exports.default = function (props) {
   return _react2.default.createElement(
     'div',
     null,
-    'Item By Id'
+    'Home'
   );
 };
 
 /***/ }),
 /* 406 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(9);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (props) {
+  return _react2.default.createElement(
+    'div',
+    null,
+    'All Items'
+  );
+};
+
+/***/ }),
+/* 407 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(9);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = function (props) {
+  return _react2.default.createElement(
+    'div',
+    null,
+    'Item By Id'
+  );
+};
+
+/***/ }),
+/* 408 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
