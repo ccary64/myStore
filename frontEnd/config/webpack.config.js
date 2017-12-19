@@ -2,11 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
-  template: path.resolve(__dirname, '../index.html'),
-  filename: 'index.html',
-  inject: 'body'
-})
+//const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
+//  template: path.resolve(__dirname, '../index.html'),
+//  filename: 'index.html',
+//  inject: 'body'
+//})
 
 module.exports = {
   entry: path.resolve(__dirname, '../src/app.js'),
@@ -29,7 +29,7 @@ module.exports = {
     }
   ]
   },
-  plugins:[ HtmlWebpackPluginConfig ],
+  plugins:[],
   stats: {
     colors: true
   },

@@ -10,8 +10,8 @@ const {
 const frontEndRoutes = [
   BASE_ROUTE,
   ITEM_ROUTE_PREFIX,
-  `${ITEM_ROUTE_PREFIX}/*`,
-  CART_ROUTE_PREFIX
+  CART_ROUTE_PREFIX,
+  `${ITEM_ROUTE_PREFIX}/:itemId`
 ]
 
 module.exports = class FrontEnd {
@@ -22,6 +22,8 @@ module.exports = class FrontEnd {
   }
 
   staticRoutes() {
-    frontEndRoutes.forEach(route => this.app.use(route , this.express.static(`${__dirname}/dist`)));
+    frontEndRoutes.forEach(route => this.app.get(route, (req, res) => res.sendFile(`${__dirname}/index.html`)));
+    this.app.use('/public', this.express.static(`${__dirname}/dist`));
+    this.app.get('*', (req, res) => res.sendFile(`${__dirname}/404.html`));
   }
 } 
