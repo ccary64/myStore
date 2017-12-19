@@ -1,2 +1,5 @@
 # Dependency directories
 node_modules/
+
+# FrontEnd build folder
+FrontEnd/dist/
