@@ -1,7 +1,10 @@
 import React from 'react';
+import Center from '../common/center'
 
 export default (props) => {
   return (
-    <div>Home</div>
+    <Center>
+      <img className="center-block" src={'http://images.clipartpanda.com/storefront-clipart-storefront-project.png'}/>
+    </Center>
   );
 }
