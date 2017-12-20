@@ -5,6 +5,7 @@ const config = require('../../config');
 const Attribute = require('./attribute');
 const AttributeItem = require('./attributeItem');
 const Product = require('./product');
+const ProductAttribute = require('./productAttribute');
 
 const db = new Sequelize(config.db.NAME, config.db.USER, config.db.PASSWORD, {
   host: 'db', 
@@ -23,7 +24,8 @@ db.authenticate()
 const models = {
   Attribute: new Attribute(db, Sequelize),
   AttributeItem: new AttributeItem(db, Sequelize),
-  Product: new Product(db, Sequelize)
+  Product: new Product(db, Sequelize),
+  ProductAttribute: new ProductAttribute(db, Sequelize),
 }
 
 Object.keys(models).forEach(modelName => models[modelName].associate(models));

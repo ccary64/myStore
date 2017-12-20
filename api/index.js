@@ -8,7 +8,8 @@ const {
   API_ROUTE_PREFIX,
   ITEM_ROUTE_PREFIX,
   CART_ROUTE_PREFIX,
-  ATTRIBUTE_ROUTE_PREFIX
+  ATTRIBUTE_ROUTE_PREFIX,
+  PRODUCT_ROUTE_PREFIX
 } = config.routes;
 
 module.exports = class Api {
@@ -24,6 +25,7 @@ module.exports = class Api {
     apiRouter.use(ITEM_ROUTE_PREFIX, this.itemsRoutes());
     apiRouter.use(CART_ROUTE_PREFIX, this.cartRoutes());
     apiRouter.use(ATTRIBUTE_ROUTE_PREFIX, this.attributeRoutes());
+    apiRouter.use(PRODUCT_ROUTE_PREFIX, this.productRoutes());
     this.app.use(API_ROUTE_PREFIX, apiRouter);
   }
 
@@ -36,9 +38,19 @@ module.exports = class Api {
 
   attributeRoutes() {
     const attributeRouter = this.express.Router();
-    attributeRouter.post('/', controllers.attributes.addItem);
-    attributeRouter.get('/', controllers.attributes.getAllItems);
+    attributeRouter.post('/', controllers.attributes.addAttribute);
+    attributeRouter.get('/', controllers.attributes.getAllAttributes);
+    attributeRouter.post('/:attributeId', controllers.attributeItems.addItem);
+    attributeRouter.get('/:attributeId', controllers.attributeItems.getAllItems);
     return attributeRouter;
+  }
+
+  productRoutes() {
+    const productRouter = this.express.Router();
+    productRouter.post('/', controllers.products.addProduct);
+    productRouter.put('/:productId', controllers.products.updateProduct);
+    productRouter.get('/', controllers.products.getAllProducts);
+    return productRouter;
   }
 
   cartRoutes() {

@@ -2,15 +2,16 @@
 
 const models = require('../models');
 
-const addAttribute = async (req, res) => {
-  const { name } = req.body;
+const addItem = async (req, res) => {
+  const { attributeId } = req.params;
+  const { label } = req.body;
 
-  if (name == null) {
+  if (label == null) {
     return res.status(422).send({ error: 'missing parameter' });
   }
 
   try {
-    const result = await models.Attribute.create({ name });
+    const result = await models.AttributeItem.create({ label, attributeId: attributeId })
     return res.sendStatus(200);
   } catch(err) {
     console.log(err);
@@ -18,9 +19,10 @@ const addAttribute = async (req, res) => {
   }
 }
 
-const getAllAttributes = async (req, res) => {
+const getAllItems = async (req, res) => {
+  const { attribute } = req.params;
   try {
-    const result = await models.Attribute.findAll();
+    const result = await models.AttributeItem.findAll();
     return res.send(result);
   } catch(err) {
     console.log(err);
@@ -28,4 +30,4 @@ const getAllAttributes = async (req, res) => {
   }
 }
 
-module.exports = { addAttribute, getAllAttributes }
+module.exports = { addItem, getAllItems }
