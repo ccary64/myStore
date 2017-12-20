@@ -23,16 +23,16 @@ class ItemsList extends React.Component {
             {items.map(item => <ListItem key={item.id} {...item} />)}
           </div>
         </div>
-        <div class="text-center">
-          <ul class="pagination">
-            <Pagination length={totalPages} />
-          </ul>
-        </div>
+        <Pagination length={totalPages} />
       </div>
     );
   }
 }
 
-const mapStateToProps = (state/*, props*/) => state.itemList;
+const mapStateToProps = (state/*, props*/) => {
+  const { filter, items } = state.itemList;
+  items = (filter) ? item.filter(items.category === filter) : items;
+  return items;
+}
 const ConnectedListItems = connect(mapStateToProps)(ItemsList);
 export default ConnectedListItems
