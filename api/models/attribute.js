@@ -14,6 +14,7 @@ class Attribute extends BaseModel {
         type: Sequelize.INTEGER,
       },
       name: {
+        unique: true,
         allowNull: false,
         type: Sequelize.STRING
       }

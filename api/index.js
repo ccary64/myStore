@@ -2,6 +2,7 @@
 
 const config = require('../config');
 const controllers = require('./controllers');
+const bodyParser = require('body-parser');
 
 const { 
   API_ROUTE_PREFIX,
@@ -14,6 +15,7 @@ module.exports = class Api {
   constructor(app, express) {
     this.app = app;
     this.express = express;
+    this.app.use(bodyParser.json());
     this.setupRouter();
   }
 
@@ -35,6 +37,7 @@ module.exports = class Api {
   attributeRoutes() {
     const attributeRouter = this.express.Router();
     attributeRouter.post('/', controllers.attributes.addItem);
+    attributeRouter.get('/', controllers.attributes.getAllItems);
     return attributeRouter;
   }
 

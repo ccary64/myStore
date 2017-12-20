@@ -21,12 +21,16 @@ db.authenticate()
   });
 
 const models = {
-  Users: new Attribute(db, Sequelize),
-  Items: new AttributeItem(db, Sequelize),
-  Skus: new Product(db, Sequelize)
+  Attribute: new Attribute(db, Sequelize),
+  AttributeItem: new AttributeItem(db, Sequelize),
+  Product: new Product(db, Sequelize)
 }
 
 Object.keys(models).forEach(modelName => models[modelName].associate(models));
 
 
-module.exports = models
+module.exports = {
+  Attribute: models.Attribute.model,
+  AttributeItem: models.AttributeItem.model,
+  Product: models.Product.model
+}
