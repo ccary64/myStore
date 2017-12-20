@@ -2,7 +2,7 @@
 node_modules/
 
 # FrontEnd build folder
-FrontEnd/dist/
+frontEnd/dist/
 
 # Docker tmp file
 docker/tmp/
