@@ -1,6 +1,4 @@
 import {
-  OPEN_ITEMS_MODAL,
-  CLOSE_ITEMS_MODAL, 
   FETCH_ITEMS_REQUEST,
   FETCH_ITEMS_SUCCESS,
   FETCH_ITEMS_FAILURE
@@ -24,17 +22,6 @@ export default (state = [], action) => {
       return {
         ...state,
         fetching: false
-      };
-    case OPEN_ITEMS_MODAL:
-      return {
-        ...state,
-        openModal: true,
-        modalImage
-      };
-    case CLOSE_ITEMS_MODAL:
-      return {
-        ...state,
-        openModal: false,
       };
     default:
       return state;

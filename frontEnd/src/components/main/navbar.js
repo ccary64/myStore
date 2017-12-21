@@ -8,7 +8,7 @@ export default (props) => {
         <div className="navbar-header">
           <Link to='/' className="navbar-brand">My Awesome Store</Link>
           <ul className="nav navbar-nav">
-            <li><Link to="/items">Items</Link></li>
+            <li><Link to="/categories">Categories</Link></li>
             <li>
               <Link to="/cart">
                 <span className="glyphicon glyphicon-shopping-cart"></span>

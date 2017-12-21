@@ -1,19 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { Thumbnail, Button, Col } from 'react-bootstrap';
+
 
 export default (props) => {
-  const { id, name } = props;
+  const { id, attributes } = props;
   return (
-    <div className="col-md-4 col-xs-4 list-group"> 
-      <Link to={`/items/${id}`} className="list-group-item label">
-        <img height={'200px'} src={'https://i.pinimg.com/736x/8e/bc/d5/8ebcd53c316b797d2f218ba5ceeacdc0--black-raspberries-strawberries.jpg'} />
-        <div className="ListItems-title">
-          <h2>
-            <span className="label label-default">{name}</span>
-          </h2>
-        </div>
-      </Link>
-    </div>
+    <Col sm={4}>
+      <Thumbnail src={`http://lorempixel.com/300/40${id}/technics/`}>
+        <h3>Widget {id}</h3>
+        {Object.keys(attributes).map((attr, index) => (<p key={index}>{attr}: {attributes[attr]}</p>))}
+        <Button bsStyle="primary">Add to Cart</Button>
+      </Thumbnail>
+    </Col>
   );
 }
 

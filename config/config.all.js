@@ -7,7 +7,9 @@ module.exports = {
     ITEM_ROUTE_PREFIX: '/items',
     CART_ROUTE_PREFIX: '/cart',
     ATTRIBUTE_ROUTE_PREFIX: '/attributes',
-    PRODUCT_ROUTE_PREFIX: '/products'
+    PRODUCT_ROUTE_PREFIX: '/products',
+    ADMIN_ROUTE_PREFIX: '/admin',
+    CATEGORIES_ROUTE_PREFIX: '/categories'
   },
   db: {
     USER: process.env.DB_USERNAME,

@@ -9,7 +9,8 @@ const {
   ITEM_ROUTE_PREFIX,
   CART_ROUTE_PREFIX,
   ATTRIBUTE_ROUTE_PREFIX,
-  PRODUCT_ROUTE_PREFIX
+  PRODUCT_ROUTE_PREFIX,
+  CATEGORIES_ROUTE_PREFIX
 } = config.routes;
 
 module.exports = class Api {
@@ -26,6 +27,7 @@ module.exports = class Api {
     apiRouter.use(CART_ROUTE_PREFIX, this.cartRoutes());
     apiRouter.use(ATTRIBUTE_ROUTE_PREFIX, this.attributeRoutes());
     apiRouter.use(PRODUCT_ROUTE_PREFIX, this.productRoutes());
+    apiRouter.use(CATEGORIES_ROUTE_PREFIX, this.categoryRoutes());
     this.app.use(API_ROUTE_PREFIX, apiRouter);
   }
 
@@ -34,6 +36,13 @@ module.exports = class Api {
     itemRouter.get('/', controllers.items.getAll);
     itemRouter.get(`/:itemId`, controllers.items.getById);
     return itemRouter;
+  }
+
+  categoryRoutes() {
+    const categoryRouter = this.express.Router();
+    categoryRouter.get('/', controllers.categories.getAll);
+    categoryRouter.get(`/:categoryId`, controllers.categories.getById);
+    return categoryRouter;
   }
 
   attributeRoutes() {

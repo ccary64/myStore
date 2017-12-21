@@ -7,7 +7,7 @@
     "start": "npm run migrate | npm run webpack | nodemon --inspect=0.0.0.0:9229 --ignore 'frontEnd/' ./server.js",
     "start:docker": "sudo docker-compose -f ./docker/docker-compose.yml up --build",
     "webpack": "webpack --progress --colors --watch --config frontEnd/config/webpack.config.js",
-    "migrate": "sequelize db:migrate",  
+    "migrate": "sequelize db:migrate",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -19,6 +19,7 @@
     "express": "^4.16.2",
     "mysql2": "^1.5.1",
     "react": "^16.2.0",
+    "react-bootstrap": "^0.31.5",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "react-router-dom": "^4.2.2",

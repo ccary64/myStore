@@ -12,19 +12,12 @@ export const fetchById = (itemId) => {
   }
 };
 
-export const fetchAll = (items) => {
+export const fetchAll = () => {
   return {
     types: FETCH_ITEMS,
     api: { url: '/items' }
   }
 };
 
-export const openModal = (modalImage) => {
-  console.log(modalImage);
-  return {
-    type: OPEN_ITEMS_MODAL,
-    modalImage
-  }
-};
 
 export const closeModal = () => ({ type: CLOSE_ITEMS_MODAL });

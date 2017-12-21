@@ -3,5 +3,7 @@ import Home from './home';
 import ItemsList from './itemsList';
 import Item from './item';
 import Cart from './cart';
+import Admin from './admin';
+import Categories from './categories';
 
-export { Main, Home, ItemsList, Item, Cart };
+export { Categories, Main, Home, ItemsList, Item, Cart, Admin };

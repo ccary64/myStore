@@ -4,14 +4,18 @@ const config = require('../config');
 const { 
   BASE_ROUTE,
   ITEM_ROUTE_PREFIX,
-  CART_ROUTE_PREFIX
+  CART_ROUTE_PREFIX,
+  ADMIN_ROUTE_PREFIX,
+  CATEGORIES_ROUTE_PREFIX
 } = config.routes;
 
 const frontEndRoutes = [
   BASE_ROUTE,
   ITEM_ROUTE_PREFIX,
   CART_ROUTE_PREFIX,
-  `${ITEM_ROUTE_PREFIX}/:itemId`
+  `${ITEM_ROUTE_PREFIX}/:itemId`,
+  ADMIN_ROUTE_PREFIX,
+  CATEGORIES_ROUTE_PREFIX
 ]
 
 module.exports = class FrontEnd {
